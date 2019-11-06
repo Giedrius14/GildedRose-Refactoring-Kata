@@ -2,6 +2,7 @@ package com.gildedrose;
 
 import static org.junit.Assert.*;
 
+import com.gildedrose.model.Item;
 import org.junit.Test;
 
 public class GildedRoseTest {
@@ -11,7 +12,7 @@ public class GildedRoseTest {
         Item[] items = new Item[] { new Item("foo", 0, 0) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
-        assertEquals("fixme", app.items[0].name);
+        assertEquals("fixme", app.items[0].getName());
     }
 
 }
