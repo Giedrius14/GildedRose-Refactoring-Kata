@@ -1,8 +1,11 @@
 package com.gildedrose;
 
 import com.gildedrose.model.Item;
+import com.gildedrose.service.GildedRoseService;
+import com.gildedrose.service.GildedRoseServiceImpl;
 
 public class TexttestFixture {
+
     public static void main(String[] args) {
         System.out.println("OMGHAI!");
 
@@ -18,7 +21,7 @@ public class TexttestFixture {
                 // this conjured item does not work properly yet
                 new Item("Conjured Mana Cake", 3, 6) };
 
-        GildedRose app = new GildedRose(items);
+        GildedRoseService gildedRoseService = new GildedRoseServiceImpl();
 
         int days = 2;
         if (args.length > 0) {
@@ -26,13 +29,13 @@ public class TexttestFixture {
         }
 
         for (int i = 0; i < days; i++) {
-            System.out.println("-------- day " + i + " --------");
-            System.out.println("name, sellIn, quality");
+            System.out.printf("-------- day %d --------%n", i);
+            System.out.println("name, daysLeftToSell, quality");
             for (Item item : items) {
                 System.out.println(item);
             }
             System.out.println();
-            app.updateQuality();
+            gildedRoseService.updateQuality(items);
         }
     }
 

@@ -3,9 +3,7 @@ package com.gildedrose.model;
 public class Item {
 
     private String name;
-
     private int daysLeftToSell;
-
     private int quality;
 
     public Item(String name, int daysLeftToSell, int quality) {
