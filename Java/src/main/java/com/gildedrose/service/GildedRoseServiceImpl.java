@@ -8,29 +8,28 @@ public class GildedRoseServiceImpl implements GildedRoseService{
 
     public Item[] updateQuality(Item[] items) {
         for (Item item : items) {
-            if (!item.getName().equals(AGED_BRIE)
-                    && !item.getName().equals(BACKSTAGE_PASSES)) {
-                if (item.getQuality() > 0 && !item.getName().equals(SULFURAS_HAND_OF_RAGNAROS)) {
-                    item.setQuality(item.getQuality() - 1);
+            if (!item.getName().equals(AGED_BRIE) && !item.getName().equals(BACKSTAGE_PASSES) && !item.getName().equals(SULFURAS_HAND_OF_RAGNAROS)) {
+                if (item.getQuality() > 0) {
+                    reduceQuality(item);
                 }
             } else {
                 if (item.getQuality() < 50) {
-                    item.setQuality(item.getQuality() + 1);
+                    increaseQuality(item);
 
                     if (item.getName().equals(BACKSTAGE_PASSES)) {
                         if (item.getDaysLeftToSell() < 11) {
-                            item.setQuality(item.getQuality() + 1);
+                            increaseQuality(item);
                         }
 
                         if (item.getDaysLeftToSell() < 6) {
-                            item.setQuality(item.getQuality() + 1);
+                            increaseQuality(item);
                         }
                     }
                 }
             }
 
             if (!item.getName().equals(SULFURAS_HAND_OF_RAGNAROS)) {
-                item.setDaysLeftToSell(item.getDaysLeftToSell() - 1);
+                reduceDaysToSell(item);
             }
 
             if (item.getDaysLeftToSell() < 0) {
@@ -38,7 +37,7 @@ public class GildedRoseServiceImpl implements GildedRoseService{
                     if (!item.getName().equals(BACKSTAGE_PASSES)) {
                         if (item.getQuality() > 0) {
                             if (!item.getName().equals(SULFURAS_HAND_OF_RAGNAROS)) {
-                                item.setQuality(item.getQuality() - 1);
+                                reduceQuality(item);
                             }
                         }
                     } else {
@@ -46,11 +45,23 @@ public class GildedRoseServiceImpl implements GildedRoseService{
                     }
                 } else {
                     if (item.getQuality() < 50) {
-                        item.setQuality(item.getQuality() + 1);
+                        increaseQuality(item);
                     }
                 }
             }
         }
         return items;
+    }
+
+    private void reduceDaysToSell(Item item) {
+        item.setDaysLeftToSell(item.getDaysLeftToSell() - 1);
+    }
+
+    private void increaseQuality(Item item) {
+        item.setQuality(item.getQuality() + 1);
+    }
+
+    private void reduceQuality(Item item) {
+        item.setQuality(item.getQuality() - 1);
     }
 }

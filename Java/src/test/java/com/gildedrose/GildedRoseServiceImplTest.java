@@ -3,10 +3,13 @@ package com.gildedrose;
 import com.gildedrose.model.Item;
 import com.gildedrose.service.GildedRoseServiceImpl;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
 import static com.gildedrose.model.Type.AGED_BRIE;
 import static org.junit.Assert.assertEquals;
 
+@RunWith(JUnit4.class)
 public class GildedRoseServiceImplTest {
 
     @Test

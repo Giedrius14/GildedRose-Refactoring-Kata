@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 import static com.gildedrose.model.Type.*;
 
-public class TextFixtureTest {
+public class MockDataTest {
 
     public static void main(String[] args) {
         Item[] items = new Item[] {
