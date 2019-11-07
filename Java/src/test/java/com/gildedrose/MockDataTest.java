@@ -20,7 +20,7 @@ public class MockDataTest {
                 new Item(BACKSTAGE_PASSES, 10, 49),
                 new Item(BACKSTAGE_PASSES, 5, 49),
                 new Item(BACKSTAGE_PASSES, 15, 20),
-                new Item(CONJURED_MANA_CAKE, 3, 6) }; //todo   new Item("Conjured Mana Cake", 3, 6) };
+                new Item(CONJURED_MANA_CAKE, 3, 6) };
 
         GildedRoseService gildedRoseService = new GildedRoseServiceImpl();
 
